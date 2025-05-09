@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const navItems = document.querySelectorAll('.nav-links a');
     const modeToggle = document.querySelector('.mode-toggle');
     const modeIcon = modeToggle.querySelector('i');
+    const hamburger = document.querySelector('.mobile-hamburger');
+    const overlay = document.querySelector('.navbar-overlay');
+    const navbar = document.querySelector('.navbar');
 
     // Toggle mobile menu
     menuToggle.addEventListener('click', () => {
@@ -140,4 +143,51 @@ document.addEventListener('DOMContentLoaded', () => {
         // Save theme preference
         localStorage.setItem('theme', newTheme);
     });
+
+    function isMobile() {
+        return window.innerWidth <= 600;
+    }
+
+    function closeDrawer() {
+        overlay.classList.remove('active');
+        navbar.classList.remove('open');
+    }
+
+    hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        overlay.classList.toggle('active');
+        navbar.classList.toggle('open');
+    });
+
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeDrawer();
+    });
+
+    // Optional: close on ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeDrawer();
+    });
+
+    // Close drawer when a nav link is clicked (on mobile)
+    navItems.forEach(link => {
+        link.addEventListener('click', function() {
+            if (isMobile()) {
+                closeDrawer();
+            }
+        });
+    });
+
+    // Disable hover extension on mobile
+    function updateNavbarHover() {
+        if (isMobile()) {
+            navbar.classList.remove('hover-enabled');
+        } else {
+            navbar.classList.add('hover-enabled');
+        }
+    }
+    updateNavbarHover();
+    window.addEventListener('resize', updateNavbarHover);
+
+    // Optionally, you can use .hover-enabled in your CSS to only allow hover on desktop:
+    // .hover-enabled:hover { ... }
 });

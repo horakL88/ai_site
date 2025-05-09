@@ -20,28 +20,36 @@
     </script>
 </head>
 <body class="loading">
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="logo">
-            <a href="#" onclick="event.preventDefault();">
-                <span class="logo-hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-                <span class="logo-text">Navigation</span>
-            </a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#home"><i class="fas fa-home"></i><span>Home</span></a></li>
-            <li><a href="#about"><i class="fas fa-user"></i><span>About</span></a></li>
-            <li><a href="#projects"><i class="fas fa-code"></i><span>Projects</span></a></li>
-            <li><a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
-        </ul>
-        <button class="mode-toggle" aria-label="Toggle dark mode">
-            <i class="fas fa-moon"></i>
-        </button>
-    </nav>
+    <!-- Place this just inside <body> before your .navbar -->
+    <button class="mobile-hamburger" aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="navbar-overlay">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#" onclick="event.preventDefault();">
+                    <span class="logo-hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <span class="logo-text">Navigation</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fas fa-home"></i><span>Home</span></a></li>
+                <li><a href="#about"><i class="fas fa-user"></i><span>About</span></a></li>
+                <li><a href="#projects"><i class="fas fa-code"></i><span>Projects</span></a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
+            </ul>
+            <button class="mode-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -177,7 +185,34 @@
     <!-- Add Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
     <!-- Add responsive navbar script -->
-    <script src="js/responsive_navbar.js"></script>
+    <script>
+    function loadNavbarScript() {
+        // Remove any previously loaded navbar scripts
+        document.querySelectorAll('script[data-navbar]').forEach(s => s.remove());
+
+        let script = document.createElement('script');
+        script.setAttribute('data-navbar', 'true');
+        if (window.innerWidth <= 600) {
+            script.src = 'js/phone_navbar.js';
+        } else {
+            script.src = 'js/responsive_navbar.js';
+        }
+        document.body.appendChild(script);
+    }
+
+    // Initial load
+    loadNavbarScript();
+
+    // Reload on resize if crossing the 600px breakpoint
+    let lastIsMobile = window.innerWidth <= 600;
+    window.addEventListener('resize', function() {
+        const isMobile = window.innerWidth <= 600;
+        if (isMobile !== lastIsMobile) {
+            loadNavbarScript();
+            lastIsMobile = isMobile;
+        }
+    });
+    </script>
     <script src="js/navbar_flash.js"></script>
 </body>
 </html>
