@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional portfolio showcasing my work and skills">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="css/purp_dom.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        // Prevent flash of light mode
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            document.body.classList.add('loading');
+        })();
+    </script>
+</head>
+<body class="loading">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#" onclick="event.preventDefault();">
+                <span class="logo-hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="logo-text">Navigation</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home"><i class="fas fa-home"></i><span>Home</span></a></li>
+            <li><a href="#about"><i class="fas fa-user"></i><span>About</span></a></li>
+            <li><a href="#projects"><i class="fas fa-code"></i><span>Projects</span></a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
+        </ul>
+        <button class="mode-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <canvas id="neuralCanvas" class="neural-background"></canvas>
+        <div class="container">
+            <div class="hero-content">
+                <h1>AI Agent <span class="highlight">Projects</span></h1>
+                <p class="subtitle">Leveraging AI to automate and enhance workflows</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="cta-button">View My Work</a>
+                    <a href="#contact" class="cta-button">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        My name is Horák László, I'm a automation engineer with a passion for building scalable and efficient systems. I'm currently working on a project that uses AI to automate and enhance workflows.
+                    </p>
+                    <div class="skills">
+                        <h3>Skills</h3>
+                        <ul class="skills">
+                            <li>n8n</li>
+                            <li>Automations</li>
+                            <li>Python</li>
+                            <li>Data Analysis</li>
+                            <!-- Add more skills as needed -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="project-carousel">
+                <button class="carousel-button prev" aria-label="Previous project">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="project-track-wrapper">
+                    <div class="project-track">
+                        <div class="project-tile">
+                            <h3>WhatsApp Support</h3>
+                            <p>AI-powered customer support automation through WhatsApp</p>
+                            <a href="projects/whatsapp_support.html" class="cta-button">View Project</a>
+                        </div>
+                        <div class="project-tile">
+                            <h3>Customer Support</h3>
+                            <p>Automated customer service system with AI integration</p>
+                            <a href="projects/customer_support.html" class="cta-button">View Project</a>
+                        </div>
+                        <div class="project-tile">
+                            <h3>Lead Qualification</h3>
+                            <p>Intelligent lead scoring and qualification system</p>
+                            <a href="projects/lead_qualification.html" class="cta-button">View Project</a>
+                        </div>
+                        <div class="project-tile">
+                            <h3>Sales Copilot</h3>
+                            <p>AI assistant for sales teams and customer interactions</p>
+                            <a href="projects/sales_copilot.html" class="cta-button">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-button next" aria-label="Next project">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>laszlo.horak.ai@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+36 707 877127</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Budapest, Hungary</p>
+                    </div>
+                </div>
+                <!--<form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2025 HL. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/dark_mode.js"></script>
+    <script src="js/neural_network.js"></script>
+    <script src="js/project_carousel.js"></script>
+    <!-- Add Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+    <!-- Add responsive navbar script -->
+    <script src="js/responsive_navbar.js"></script>
+    <script src="js/navbar_flash.js"></script>
+</body>
+</html>
